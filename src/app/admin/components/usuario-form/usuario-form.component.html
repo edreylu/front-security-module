@@ -1,4 +1,15 @@
 <p>
     <input type="text" [formControl]="nameField" />
     {{ nameField.value }}
+    {{ nameField.valid }}
+</p>
+
+<p>
+    <input type="number" [formControl]="noInmuebleField" />
+    {{ noInmuebleField.value }}
+</p>
+
+<p>
+    <input type="date" [formControl]="fechaAditoriaField" />
+    {{ fechaAditoriaField.value }}
 </p>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-usuario-form',
@@ -8,7 +8,11 @@ import { FormControl } from '@angular/forms';
 })
 export class UsuarioFormComponent implements OnInit {
 
-  nameField = new FormControl('');
+  nameField = new FormControl('', Validators.required);
+  noInmuebleField = new FormControl('');
+  fechaAditoriaField = new FormControl('');
+
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './guardians/admin.guard';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
+import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
@@ -11,17 +13,22 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/home',
+        redirectTo: 'home',
         pathMatch: 'full'
       },
       {
         path: 'home',
         component: HomeComponent
       },
+      {
+        path: 'login',
+        component: LoginComponent
+      },
     ]
   },
   {
     path: 'admin',
+    canActivate:[AdminGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
     //component: 
   },

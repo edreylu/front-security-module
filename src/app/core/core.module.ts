@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsuarioService } from './service/usuario.service';
+import { UsuarioService } from './service/usuario/usuario.service';
 
 
 

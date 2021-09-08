@@ -2,8 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { User } from 'src/app/core/service/usuario.model';
-import { UsuarioService } from 'src/app/core/service/usuario.service';
+import { User } from 'src/app/core/service/usuario/usuario.model';
+import { UsuarioService } from 'src/app/core/service/usuario/usuario.service';
 
 @Component({
   selector: 'app-usuario-list',
@@ -17,12 +17,11 @@ export class UsuarioListComponent implements AfterViewInit {
   users!: User[];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns: string[] = ['noUsuario', 'userName'];
+  displayedColumns: string[] = ['noUsuario', 'userName', 'nombre', 'claveUr'];
   constructor(
     private userService: UsuarioService
   ) {
     this.getUsers();
-    
   }
 
   getUsers(){
@@ -36,6 +35,7 @@ export class UsuarioListComponent implements AfterViewInit {
     }
 
   ngAfterViewInit(): void {
+    this.paginator._intl.itemsPerPageLabel = 'Registros por pagina';
   }
 
   applyFilter(event: Event) {

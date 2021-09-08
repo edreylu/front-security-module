@@ -1,7 +1,8 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { TokenStorageService } from 'src/app/core/service/auth/token-storage.service';
 
 @Component({
   selector: 'app-nav',
@@ -16,6 +17,12 @@ export class NavComponent {
     shareReplay()
   );
 
-constructor(private breakpointObserver: BreakpointObserver) {}
+constructor(private breakpointObserver: BreakpointObserver,
+  private tokenStorageService: TokenStorageService) {}
+
+logout(): void {
+  this.tokenStorageService.signOut();
+  //window.location.reload();
+}
 
 }
